@@ -10,3 +10,4 @@ compareAges:
 .Lnot_equal:
     movl $0, %eax
     ret
+    

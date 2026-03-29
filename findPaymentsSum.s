@@ -5,7 +5,7 @@ findPaymentsSum:
 
 .Lloop_fp:
     cmp $esi, %ecx
-    fge .Ldone_fp
+    jge .Ldone_fp
 
     movl 8(%rdi, %rcx, 4), %edx
     addl %edx, %eax

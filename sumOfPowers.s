@@ -10,7 +10,9 @@ sumOfPowers:
     imull %ecx, %edx
     addl %edx, %eax
 
-    incl %ecxjmp .Lloop_sp
+    incl %ecx
+    jmp .Lloop_sp
 
 .Ldone_sp:
     ret
+    

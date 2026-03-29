@@ -7,12 +7,15 @@ findSalariesSum:
     cmp %esi, %ecx
     jge .Ldone_fs
 
-    movl 8(%rdi, %rcx, 12), %edx
-    addl %edx, %eax
+    movl %ecx, %edx
+    imull $12, %edx, %edx
+    movl 8(%rdi, %rdx), %r8d
+    addl %r8d, %eax
 
     incl %ecx
     jmp .Lloop_fs
 
 .Ldone_fs:
     ret
+
     
