@@ -7,7 +7,7 @@ loop:
     cmp %esi, %ecx #if i>= num, stop
     jge done
 
-    mov 8(%rdi, %rcx, 4), %edx # edx = c -> payments[i]
+    mov 8(%rdi, %rcx, 4), %edx # loads the i-th payment (8 is the offset of payments[0], 4 is the size of each payment)
     add %edx, %eax # sum += payments[i]
 
     inc %rcx # i++

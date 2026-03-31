@@ -7,9 +7,9 @@ loop:
     cmp %edi, %ecx # compare i with n
     jg done # if i > n, exit loop
 
-    mov %ecx, %edx # edx = i
-    imul %ecx, %edx # edx = i * i
-    add %edx, %eax # sum += i*i
+    mov %ecx, %edx # copy the value from %ecx into %edx
+    imul %ecx, %edx # multiply %edx by %ecx
+    add %edx, %eax # add %edx to %eax
 
     inc %ecx #i++
     jmp loop
