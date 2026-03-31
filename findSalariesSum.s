@@ -1,21 +1,22 @@
     .globl findSalariesSum
 findSalariesSum:
-    movl $0, %eax
-    movl $0, %ecx
+    mov $0, %eax #sum = 0
+    mov $0, %ecx #i = 0
 
-.Lloop_fs:
-    cmp %esi, %ecx
-    jge .Ldone_fs
+loop_sal:
+    cmp %esi, %ecx #if i >= size, stop
+    jge done_sal
 
-    movl %ecx, %edx
-    imull $12, %edx, %edx
-    movl 8(%rdi, %rdx), %r8d
-    addl %r8d, %eax
+    mov %ecx, %edx #edx = i
+    imul $12, %edx #edx = i*12
 
-    incl %ecx
-    jmp .Lloop_fs
+    mov 8(%rdi, %rdx), %r8d #r8d = e[i].salary
+    add %r8d, %eax #sum += salary
 
-.Ldone_fs:
+    inc %ecx
+    jmp loop_sal
+
+done_sal:
     ret
 
     

@@ -1,17 +1,17 @@
     .globl findPaymentsSum
 findPaymentsSum:
-    movl $0, %eax
-    movl $0, %ecx
+    mov $0, %eax #sum = 0
+    mov $0, %ecx #i = 0
 
-.Lloop_fp:
-    cmp $esi, %ecx
-    jge .Ldone_fp
+loop_pay:
+    cmp $esi, %ecx #if i>= num, stop
+    jge done_pay
 
-    movl 8(%rdi, %rcx, 4), %edx
-    addl %edx, %eax
+    mov 8(%rdi, %ecx, 4), %edx # edx = c -> payments[i]
+    add %edx, %eax # sum += payments[i]
 
-    incl %ecx
-    jmp .Lloop_fp
+    inc %ecx # i++
+    jmp loop_pay
 
-.Ldone_fp:
+done_pay:
     ret

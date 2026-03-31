@@ -1,18 +1,19 @@
     .globl sumOfPowers
 sumOfPowers:
-    movl $0, %eax
-    movl $1, %ecx
-.Lloop_sp:
-    cmp %edi, %ecx
-    jg .Ldone_sp
+    mov $0, %eax # sum = 0
+    mov $1, %ecx # i = 1
 
-    movl %ecx, %edx
-    imull %ecx, %edx
-    addl %edx, %eax
+loop_start:
+    cmp %edi, %ecx # compare i with n
+    jg loop_end # if i > n, exit loop
 
-    incl %ecx
-    jmp .Lloop_sp
+    mov %ecx, %edx # edx = i
+    imul %ecx, %edx # edx = i * i
+    add %edx, %eax # sum += i*i
 
-.Ldone_sp:
+    inc %ecx #i++
+    jmp loop_start
+
+loop_end:
     ret
     
